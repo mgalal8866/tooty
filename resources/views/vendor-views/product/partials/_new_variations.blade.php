@@ -1,4 +1,4 @@
-
+{{--
 
 <div class="__bg-F8F9FC-card count_div view_new_option mb-2">
     <div>
@@ -76,7 +76,7 @@
                             <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-md-0">
                                 @foreach (json_decode($language) as $lang)
                                 <div class="col-md-4 col-sm-6">
-                                    <label for="">{{$lang.'_'. translate('Option_name') }}</label>
+                                    <label for="">{{$lang."" translate('Option_name') }}</label>
                                     <input class="form-control" required type="text"
                                            name="options[{{ $key }}][values][{{ $key_value }}][label]"
                                            value="{{ $value['label'] }}">
@@ -114,4 +114,4 @@
 
         </div>
     </div>
-</div>
+</div> --}}
