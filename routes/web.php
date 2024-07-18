@@ -1,7 +1,7 @@
 <?php
 
 
-use VerifyCsrfToken;
+// use VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaytmController;
 use App\Http\Controllers\LiqPayController;
@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/insert', function () {
 
-    $arrayVar = 
+    $arrayVar =
     [
         [
             'id' => '31',
@@ -4523,7 +4523,7 @@ Route::get('/insert', function () {
             'created_at' => '2023-09-18 19:42:40',
             'updated_at' => '2023-09-18 19:42:40',
         ],
-    
+
 
             [
                 'id' => '531',
@@ -4968,7 +4968,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-09-28 08:43:08',
                 'updated_at' => '2023-09-28 08:43:09',
             ],
-            
+
             [
                 'id' => '580',
                 'f_name' => 'shanga abas',
@@ -5360,7 +5360,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-10-11 16:01:52',
                 'updated_at' => '2023-10-11 16:01:53',
             ],
-            
+
             [
                 'id' => '619',
                 'f_name' => 'Dyari',
@@ -5604,7 +5604,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-10-16 16:02:45',
                 'updated_at' => '2023-10-16 16:02:46',
             ],
-            
+
             [
                 'id' => '640',
                 'f_name' => 'هيوا عدالت احمد',
@@ -7132,7 +7132,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-12-05 01:42:44',
                 'updated_at' => '2023-12-05 01:42:45',
             ],
-            
+
             [
                 'id' => '874',
                 'f_name' => 'هێدی احمد',
@@ -7195,7 +7195,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-12-06 09:35:15',
                 'updated_at' => '2023-12-06 09:35:16',
             ],
-           
+
             [
                 'id' => '880',
                 'f_name' => 'shady',
@@ -7229,7 +7229,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-12-07 23:01:04',
                 'updated_at' => '2023-12-07 23:01:04',
             ],
-            
+
             [
                 'id' => '884',
                 'f_name' => 'Ahmad Sirwan',
@@ -7377,7 +7377,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-12-16 16:54:30',
                 'updated_at' => '2024-06-10 00:52:03',
             ],
-           
+
             [
                 'id' => '898',
                 'f_name' => 'zryan',
@@ -7468,7 +7468,7 @@ Route::get('/insert', function () {
                 'created_at' => '2023-12-20 22:21:14',
                 'updated_at' => '2023-12-20 22:22:27',
             ],
-           
+
             [
                 'id' => '906',
                 'f_name' => 'azdar',
@@ -7972,7 +7972,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-01-16 18:56:46',
                 'updated_at' => '2024-01-16 18:56:47',
             ],
-           
+
             [
                 'id' => '954',
                 'f_name' => 'مسعود',
@@ -8320,7 +8320,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-01-29 17:31:45',
                 'updated_at' => '2024-06-10 14:00:59',
             ],
-            
+
             [
                 'id' => '994',
                 'f_name' => 'hawsar',
@@ -10493,7 +10493,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-03-11 19:25:33',
                 'updated_at' => '2024-03-11 19:25:33',
             ],
-            
+
             [
                 'id' => '1182',
                 'f_name' => 'eman abdulhameedshahab',
@@ -15235,7 +15235,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-04-03 01:07:51',
                 'updated_at' => '2024-04-03 01:07:51',
             ],
-            
+
             [
                 'id' => '1613',
                 'f_name' => 'sozyarhabib',
@@ -16507,7 +16507,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-04-27 21:51:20',
                 'updated_at' => '2024-04-27 21:51:20',
             ],
-            
+
             [
                 'id' => '1732',
                 'f_name' => 'شوشە  عیزەت',
@@ -16732,7 +16732,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-05-02 19:10:40',
                 'updated_at' => '2024-05-02 19:10:41',
             ],
-          
+
             [
                 'id' => '1754',
                 'f_name' => 'rozha',
@@ -17118,7 +17118,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-05-17 16:18:50',
                 'updated_at' => '2024-05-17 16:18:51',
             ],
-            
+
             [
                 'id' => '1785',
                 'f_name' => 'ئارام',
@@ -17938,8 +17938,8 @@ Route::get('/insert', function () {
                 'created_at' => '2024-05-30 15:47:56',
                 'updated_at' => '2024-05-30 15:47:59',
             ],
-             
-            
+
+
             [
                 'id' => '1864',
                 'f_name' => 'zhir mahdi ali',
@@ -18707,7 +18707,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-06-11 11:09:56',
                 'updated_at' => '2024-06-11 11:09:56',
             ],
-            
+
             [
                 'id' => '1939',
                 'f_name' => 'Bilal Tooty Delivery',
@@ -18992,7 +18992,7 @@ Route::get('/insert', function () {
                 'created_at' => '2024-06-15 13:29:14',
                 'updated_at' => '2024-06-15 13:29:14',
             ],
-           
+
             [
                 'id' => '1963',
                 'f_name' => 'mordan Mohammad',
@@ -19134,8 +19134,8 @@ Route::get('/insert', function () {
                 'created_at' => '2024-06-19 20:08:03',
                 'updated_at' => '2024-06-19 20:08:03',
             ],
-            
-        
+
+
     ];
 
     DB::beginTransaction();
@@ -19143,7 +19143,7 @@ Route::get('/insert', function () {
     try {
         foreach ($arrayVar as $it) {
 
-        
+
                 $user = User::create([
 
                     'id' => $it['id'] ?? '',
@@ -19156,7 +19156,7 @@ Route::get('/insert', function () {
 
                 $user->ref_code = Helpers::generate_referer_code($user);
                 $user->save();
-            
+
         }
         DB::commit();
     } catch (Exception $e) {
