@@ -652,7 +652,7 @@
                     `][name_Default] class="form-control new_option_name" type="text" data-count="` +
                     count + `">
                                 </div>`;
-                                
+
                 languages.forEach(lang => {
  add_option_view +=`
                                 <div class="col-xl-2 col-lg-3">
@@ -715,7 +715,7 @@
 
                 languages.forEach(lang => {
                     add_option_view +=
-                        `<div class="col-md-4 col-sm-6">
+                        `<div class="col-md-2 col-sm-3">
                                              <label for="">{{ translate('Option_name') }}_${lang}</label>
                 <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_${lang}]" id="">
                                             </div>`;
