@@ -82,7 +82,7 @@
                                 <label for="">{{ translate('Option_name') }}</label>
                                 <input class="form-control" required type="text"
                                     name="options[{{ $key }}][values][{{ $key_value }}][label_{{ $lang }}]"
-                                    value="{{ $value['label_'{{ $lang }}] }}">
+                                    value="{{ $value['label_'. $lang ] }}">
                             </div>
                             @endforeach
                             <div class="col-md-4 col-sm-6">
