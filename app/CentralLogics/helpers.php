@@ -4063,7 +4063,7 @@ class Helpers
             foreach ($foodVariations as $variation) {
                 // Create a new array with the required structure
                 $newVariation = [
-                    'name' => $variation["name_$local"]??($variation["name"]??''),
+                    'name' => $variation["name_$local"]??($variation["name"]??'undefined'),
                     'type' => $variation['type'],
                     'min' => $variation['min'],
                     'max' => $variation['max'],
@@ -4074,7 +4074,7 @@ class Helpers
                 // Iterate through the values and update labels
                 foreach ($variation['values'] as $value) {
                     $newValue = [
-                        'label' => $value["label_$local"]??($value["label"]??''),
+                        'label' => $value["label_$local"]??($value["label"]??'undefined'),
                         'optionPrice' => $value['optionPrice']
                     ];
                     $newVariation['values'][] = $newValue;
