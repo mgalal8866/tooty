@@ -4087,6 +4087,7 @@ class Helpers
             // $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
             // Output the result
+            return  $result;
             return  $finalJson;
 
         }else{
