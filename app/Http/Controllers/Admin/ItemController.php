@@ -503,8 +503,17 @@ class ItemController extends Controller
 
         $food_variations = [];
         if (isset($request->options)) {
+            $langdata =    BusinessSetting::where('key', 'language')->first();
+            $langdata = $langdata->value ?? null;
+            
             foreach (array_values($request->options) as $key => $option) {
-                $temp_variation['name'] = $option['name'];
+                $temp_variation['name'] = $option['name_Default'];
+
+                foreach (json_decode($langdata) as $lang) {
+               
+                    $temp_variation['name_' . $lang] = $option['name_' . $lang];
+                }
+
                 $temp_variation['type'] = $option['type'];
                 $temp_variation['min'] = $option['min'] ?? 0;
                 $temp_variation['max'] = $option['max'] ?? 0;
@@ -523,8 +532,13 @@ class ItemController extends Controller
                 $temp_variation['required'] = $option['required'] ?? 'off';
                 $temp_value = [];
                 foreach (array_values($option['values']) as $value) {
-                    if (isset($value['label'])) {
-                        $temp_option['label'] = $value['label'];
+                    if(isset($value['label_Default'])){
+                        $temp_option['label'] = $value['label_Default'];
+                    }
+                    foreach (json_decode($langdata) as $lang) {
+                        if (isset($value['label_' . $lang])) {
+                            $temp_option['label_' . $lang] = $value['label_' . $lang];
+                        }
                     }
                     $temp_option['optionPrice'] = $value['optionPrice'];
                     array_push($temp_value, $temp_option);
