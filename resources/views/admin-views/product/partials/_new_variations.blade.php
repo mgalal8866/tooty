@@ -15,13 +15,16 @@
             </div>
         </div>
         <div class="row g-2">
+            @foreach (json_decode($language) as $lang)
             <div class="col-xl-4 col-lg-6">
-                <label for="">{{ translate('name') }}</label>
-                <input required name="options[{{ $key }}][name]" class="form-control new_option_name"
+                <label for="">{{ translate('name') }}_{{ $lang }}</label>
+                <input required name="options[{{ $key }}][name_{{$lang}}]" class="form-control new_option_name"
                     type="text" data-count="{{ $key }}"
-                    value="{{ $item['name'] }}">
+                    value="{{ $item['name_{{$lang}}'] }}">
             </div>
-
+     
+                
+            @endforeach
             <div class="col-xl-4 col-lg-6">
                 <div class="form-group">
                     <label class="input-label text-capitalize d-flex alig-items-center"><span
