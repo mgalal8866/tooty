@@ -241,7 +241,7 @@ class ItemController extends Controller
         $food_variations = [];
         if (isset($request->options)) {
             $langdata =    BusinessSetting::where('key', 'language')->first();
-            $langdata = $langdata->value ?? null
+            $langdata = $langdata->value ?? null;
             foreach (array_values($request->options) as $key => $option) {
                 $temp_variation['name'] = $option['name_Default'];
 
