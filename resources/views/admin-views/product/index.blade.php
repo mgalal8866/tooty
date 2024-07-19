@@ -649,7 +649,7 @@
                                 
                 languages.forEach(lang => {
  add_option_view +=`
-                                <div class="col-xl-4 col-lg-6">
+                                <div class="col-xl-2 col-lg-3">
                                     <label for="">{{ translate('name') }}_`+lang+`</label>
                                     <input required name=options[` + count +
                     `][name_`+lang+`] class="form-control new_option_name" type="text" data-count="` +
@@ -701,7 +701,11 @@
                             <div id="option_price_` + count + `" >
                                 <div class="bg-white border rounded p-3 pb-0 mt-3">
                                     <div  id="option_price_view_` + count + `">
-                                        <div class="row g-3 add_new_view_row_class mb-3">`;
+                                        <div class="row g-3 add_new_view_row_class mb-3">
+                                              <div class="col-md-2 col-sm-3">
+                <label for="">{{ translate('Option_name') }}_Default</label>
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default" id="">
+            </div>`;
 
                 languages.forEach(lang => {
                     add_option_view +=
@@ -745,11 +749,15 @@
 
             countRow = 1 + $('#option_price_view_' + data).children('.add_new_view_row_class').length;
             let add_new_row_view = `
-        <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-sm-0">`;
+        <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-sm-0">
+             <div class="col-md-2 col-sm-3">
+                <label for="">{{ translate('Option_name') }}_Default</label>
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default" id="">
+            </div>`;
 
             languages.forEach(lang => {
                 add_new_row_view += `
-            <div class="col-md-4 col-sm-5">
+            <div class="col-md-2 col-sm-3">
                 <label for="">{{ translate('Option_name') }}_${lang}</label>
                 <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_${lang}]" id="">
             </div>`;

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Models\Brand;
-use App\Models\EcommerceItemDetails;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Item;
+use App\Models\Brand;
 use App\Models\Store;
 use App\Models\Review;
 use App\Models\Category;
@@ -19,6 +18,7 @@ use App\Models\ItemCampaign;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
 use App\Exports\ItemListExport;
+use App\Models\BusinessSetting;
 use App\Models\CommonCondition;
 use Illuminate\Validation\Rule;
 use App\Exports\StoreItemExport;
@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\DB;
 use App\CentralLogics\ProductLogic;
 use App\Models\PharmacyItemDetails;
 use App\Http\Controllers\Controller;
+use App\Models\EcommerceItemDetails;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
@@ -40,6 +41,8 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
+     $lan =    BusinessSetting::where('key', 'language')->first();
+     dd($lan )  ;
         $categories = Category::where(['position' => 0])->get();
         return view('admin-views.product.index', compact('categories'));
     }
@@ -190,7 +193,7 @@ class ItemController extends Controller
                 if ($request[$str][0] == null) {
                     $validator->getMessageBag()->add('name', translate('messages.attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
-                }
+                } 
                 $temp['name'] = 'choice_' . $no;
                 $temp['title'] = $request->choice[$key];
                 $temp['options'] = explode(',', implode('|', preg_replace('/\s+/', ' ', $request[$str])));
