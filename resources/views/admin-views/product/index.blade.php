@@ -708,9 +708,10 @@
                                 <div class="bg-white border rounded p-3 pb-0 mt-3">
                                     <div  id="option_price_view_` + count + `">
                                         <div class="row g-3 add_new_view_row_class mb-3">
+
                                               <div class="col-md-2 col-sm-3">
                 <label for="">{{ translate('Option_name') }}_Default</label>
-                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default" id="">
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default]" id="">
             </div>`;
 
                 languages.forEach(lang => {
@@ -758,7 +759,7 @@
         <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-sm-0">
              <div class="col-md-2 col-sm-3">
                 <label for="">{{ translate('Option_name') }}_Default</label>
-                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default" id="">
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default]" id="">
             </div>`;
 
             languages.forEach(lang => {
