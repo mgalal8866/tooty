@@ -4084,8 +4084,8 @@ class Helpers
             }
 
             // Encode the result back to JSON
-            $finalJson = json_encode($result, JSON_PRETTY_PRINT);
-
+            $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+          
             // Output the result
             return  $finalJson;
 
