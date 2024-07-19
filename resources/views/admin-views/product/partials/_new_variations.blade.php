@@ -87,10 +87,10 @@
                         <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-md-0">
                             @if($value['label'])
                             <div class="col-md-4 col-sm-6">
-                                <label for="">{{ translate('Option_name') }}_Default</label>
+                                <label for="">{{ translate('Option_name') }}_label_Default</label>
                                 <input class="form-control" required type="text"
                                     name="options[{{ $key }}][values][{{ $key_value }}][label_Default]"
-                                    value="{{ $value['label ] }}">
+                                    value="{{ $value['label' ] }}">
                             </div>
                             @endif
                             @foreach (json_decode($language) as $lang)
