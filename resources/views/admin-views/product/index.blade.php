@@ -627,6 +627,8 @@
         $(document).ready(function() {
             $("#add_new_option_button").click(function(e) {
                 $('#empty-variation').hide();
+                const languages = @json(json_decode($language));
+
                 count++;
                 let add_option_view = `
                     <div class="__bg-F8F9FC-card view_new_option mb-2">
