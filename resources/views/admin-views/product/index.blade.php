@@ -650,7 +650,7 @@
                 languages.forEach(lang => {
  add_option_view +=`
                                 <div class="col-xl-4 col-lg-6">
-                                    <label for="">{{ translate('name')_`+lang+` }}</label>
+                                    <label for="">{{ translate('name') }}_`+lang+`</label>
                                     <input required name=options[` + count +
                     `][name_`+lang+`] class="form-control new_option_name" type="text" data-count="` +
                     count + `">
