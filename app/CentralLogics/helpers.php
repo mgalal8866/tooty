@@ -211,6 +211,7 @@ class Helpers
 
     public static function product_data_formatting($data, $multi_data = false, $trans = false, $local = 'en' , $temp_product=false)
     {
+        dd('');
         $storage = [];
         if ($multi_data == true) {
             foreach ($data as $item) {
