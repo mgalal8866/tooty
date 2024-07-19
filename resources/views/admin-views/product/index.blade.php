@@ -704,29 +704,32 @@
             count = data;
             countRow = 1 + $('#option_price_view_' + data).children('.add_new_view_row_class').length;
             let add_new_row_view = `
-            <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-sm-0">
-                <div class="col-md-4 col-sm-5">
-                        <label for="">{{ translate('Option_name') }}</label>
-                        <input class="form-control" required type="text" name="options[` + count + `][values][` +
-                countRow + `][label]" id="">
-                    </div>
-                    <div class="col-md-4 col-sm-5">
-                        <label for="">{{ translate('Additional_price') }}</label>
-                        <input class="form-control"  required type="number" min="0" step="0.01" name="options[` +
-                count +
-                `][values][` + countRow + `][optionPrice]" id="">
-                    </div>
-                    <div class="col-sm-2 max-sm-absolute">
-                        <label class="d-none d-sm-block">&nbsp;</label>
-                        <div class="mt-1">
-                            <button type="button" class="btn btn-danger btn-sm deleteRow"
-                                title="{{ translate('Delete') }}">
-                                <i class="tio-add-to-trash"></i>
-                            </button>
-                        </div>
-                </div>
+        <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-sm-0">`;
+
+        @foreach (json_decode($language) as $lang)
+        add_new_row_view += `
+            <div class="col-md-4 col-sm-5">
+                <label for="">{{ translate('Option_name') }}_`+$lang+`</label>
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_`+$lang+`]" id="">
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <label for="">{{ translate('Additional_price') }}</label>
+                <input class="form-control" required type="number" min="0" step="0.01" name="options[` + count + `][values][` + countRow + `][optionPrice]" id="">
             </div>`;
-            $('#option_price_view_' + data).append(add_new_row_view);
+        @endforeach
+
+        add_new_row_view += `
+            <div class="col-sm-2 max-sm-absolute">
+                <label class="d-none d-sm-block">&nbsp;</label>
+                <div class="mt-1">
+                    <button type="button" class="btn btn-danger btn-sm deleteRow" title="{{ translate('Delete') }}">
+                        <i class="tio-add-to-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>`;
+
+        $('#option_price_view_' + data).append(add_new_row_view);
 
         }
 
