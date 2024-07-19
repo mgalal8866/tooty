@@ -4055,7 +4055,7 @@ class Helpers
         if($var){
 
             $foodVariations = json_decode($var, true);
-
+            return    $foodVariations;
             // Initialize the result array
             $result = [];
 
