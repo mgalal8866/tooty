@@ -20,7 +20,7 @@
                 <label for="">{{ translate('name') }}_{{ $lang }}</label>
                 <input required name="options[{{ $key }}][name_{{$lang}}]" class="form-control new_option_name"
                     type="text" data-count="{{ $key }}"
-                    value="{{ $item['name_{{$lang}}'] }}">
+                    value="{{ $item['name_'.$lang] }}">
             </div>
      
                 
