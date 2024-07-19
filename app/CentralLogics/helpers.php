@@ -4087,8 +4087,8 @@ class Helpers
             // $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
             // Output the result
-            // return    $foodVariations;
-            return  $foodVariations = json_decode( $finalJson, true);;
+            // return    $foodVariations;result
+            return  $foodVariations = json_decode( $result, true);;
 
         }else{
           return '';
