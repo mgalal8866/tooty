@@ -4088,7 +4088,7 @@ class Helpers
 
             // Output the result
             return  $result;
-            return  $finalJson;
+            // return  $finalJson;
 
         }else{
           return '';
