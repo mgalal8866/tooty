@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="row g-2">
-            @if($item['name'] )
+            @if(isset($item['name']) )
             <div class="col-xl-4 col-lg-6">
                 <label for="">{{ translate('name') }}</label>
                 <input required name="options[{{ $key }}][name_Default]" class="form-control new_option_name"
@@ -24,11 +24,13 @@
             </div>
             @endif
             @foreach (json_decode($language) as $lang)
+            @if(isset($item['name_'.$lang]))
             <div class="col-xl-4 col-lg-6">
                 <label for="">{{ translate('name') }}_{{ $lang }}</label>
                 <input required name="options[{{ $key }}][name_{{$lang}}]" class="form-control new_option_name"
                     type="text" data-count="{{ $key }}"
                     value="{{ $item['name_'.$lang] }}">
+                    @endif
             </div>
      
                 
@@ -85,7 +87,7 @@
                 @if (isset($item['values']))
                     @foreach ($item['values'] as $key_value => $value)
                         <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-md-0">
-                            @if($value['label'])
+                            @if(isset($value['label']))
                             <div class="col-md-4 col-sm-6">
                                 <label for="">{{ translate('Option_name') }}_label_Default</label>
                                 <input class="form-control" required type="text"
@@ -94,12 +96,14 @@
                             </div>
                             @endif
                             @foreach (json_decode($language) as $lang)
+                            @if(isset($value['label_'. $lang ]))
                             <div class="col-md-4 col-sm-6">
                                 <label for="">{{ translate('Option_name') }}_{{  $lang }}</label>
                                 <input class="form-control" required type="text"
                                     name="options[{{ $key }}][values][{{ $key_value }}][label_{{ $lang }}]"
                                     value="{{ $value['label_'. $lang ] }}">
                             </div>
+                            @endif
                             @endforeach
                             <div class="col-md-4 col-sm-6">
                                 <label for="">{{ translate('Additional_price') }}</label>
