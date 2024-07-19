@@ -211,7 +211,7 @@ class Helpers
 
     public static function product_data_formatting($data, $multi_data = false, $trans = false, $local = 'en' , $temp_product=false)
     {
-        dd('');
+
         $storage = [];
         if ($multi_data == true) {
             foreach ($data as $item) {
@@ -377,6 +377,8 @@ class Helpers
             }else{
                 $data['food_variations'] ='';
             }
+
+               dd( $data['food_variations'] );
              $data['store_name'] = $data->store->name;
             $data['is_campaign'] = $data->store?->campaigns_count>0?1:0;
             $data['module_type'] = $data->module->module_type;
