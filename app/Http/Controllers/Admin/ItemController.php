@@ -246,7 +246,7 @@ class ItemController extends Controller
                 $temp_variation['name'] = $option['name_Default'];
 
                 foreach (json_decode($langdata) as $lang) {
-                dd($langdata,$lang);
+               
                     $temp_variation['name_' . $lang] = $option['name_' . $lang];
                 }
 
