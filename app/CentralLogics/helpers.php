@@ -256,7 +256,7 @@ class Helpers
                 }
                 $item['variations'] = $variations;
                 // $item['food_variations'] = $item['food_variations']?json_decode($item['food_variations'], true):'';
-                Helpers::handelfood_variations( $item['food_variations'] ,$local);
+                $item['food_variations'] = Helpers::handelfood_variations( $item['food_variations'] ,$local);
                 $item['module_type'] = $item->module->module_type;
                 $item['store_name'] = $item->store?->name;
                 $item['is_campaign'] = $item->store?->campaigns_count>0?1:0;
