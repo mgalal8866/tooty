@@ -4058,7 +4058,7 @@ class Helpers
 
             // Initialize the result array
             $result = [];
-dd($local);
+ 
             // Iterate through each food variation
             foreach ($foodVariations as $variation) {
                 // Create a new array with the required structure
