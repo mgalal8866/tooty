@@ -4083,9 +4083,8 @@ class Helpers
                 $result[] = $newVariation;
             }
 
-
-            return json_encode($result );
-
+            return json_decode(json_encode($result ), true);
+        
 
         }else{
           return '';
