@@ -4074,7 +4074,7 @@ class Helpers
                 // Iterate through the values and update labels
                 foreach ($variation['values'] as $value) {
                     $newValue = [
-                        'label' => $value["label_$local"]??($value["label"]?''),
+                        'label' => $value["label_$local"]??($value["label"]??''),
                         'optionPrice' => $value['optionPrice']
                     ];
                     $newVariation['values'][] = $newValue;
