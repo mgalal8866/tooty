@@ -332,8 +332,50 @@ class Helpers
                 unset($data['end_date']);
             }
             $data['variations'] = $variations;
-            $data['food_variations'] = $data['food_variations']?json_decode($data['food_variations'], true):'';
-            $data['store_name'] = $data->store->name;
+            if($data['food_variations']){
+                foreach (json_decode($data['food_variations'], true) as $value) {
+                    $categories[] = ['id' => (string)$value->id, 'position' => $value->position];
+                }
+
+
+                $foodVariations = json_decode($data['food_variations'], true);
+
+                // Initialize the result array
+                $result = [];
+
+                // Iterate through each food variation
+                foreach ($foodVariations as $variation) {
+                    // Create a new array with the required structure
+                    $newVariation = [
+                        'name' => $variation["name_$local"],
+                        'type' => $variation['type'],
+                        'min' => $variation['min'],
+                        'max' => $variation['max'],
+                        'required' => $variation['required'],
+                        'values' => []
+                    ];
+
+                    // Iterate through the values and update labels
+                    foreach ($variation['values'] as $value) {
+                        $newValue = [
+                            'label' => $value["label_$local"],
+                            'optionPrice' => $value['optionPrice']
+                        ];
+                        $newVariation['values'][] = $newValue;
+                    }
+
+                    $result[] = $newVariation;
+                }
+
+                // Encode the result back to JSON
+                $finalJson = json_encode($result, JSON_PRETTY_PRINT);
+
+                // Output the result
+                $data['food_variations'] = $finalJson;
+            }else{
+                $data['food_variations'] ='';
+            }
+             $data['store_name'] = $data->store->name;
             $data['is_campaign'] = $data->store?->campaigns_count>0?1:0;
             $data['module_type'] = $data->module->module_type;
             $data['zone_id'] = $data->store->zone_id;
