@@ -4082,7 +4082,7 @@ class Helpers
 
                 $result[] = $newVariation;
             }
-
+dd($result);
             // Encode the result back to JSON
             $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
