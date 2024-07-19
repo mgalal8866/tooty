@@ -645,7 +645,13 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row g-2">`;
+                            <div class="row g-2">
+                                 <div class="col-xl-2 col-lg-3">
+                                    <label for="">{{ translate('name') }}_Default</label>
+                                    <input required name=options[` + count +
+                    `][name_Default] class="form-control new_option_name" type="text" data-count="` +
+                    count + `">
+                                </div>`;
                                 
                 languages.forEach(lang => {
  add_option_view +=`

@@ -243,6 +243,7 @@ class ItemController extends Controller
             $lang =    BusinessSetting::where('key', 'language')->first();
             foreach (array_values($request->options) as $key => $option) {
                 $temp_variation['name'] = $option['name'];
+                
                 foreach (json_decode($lang) as $lan) {
                     $temp_variation['name_' . $lan] = $option['name_' . $lan];
                 }
