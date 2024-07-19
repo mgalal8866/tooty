@@ -372,6 +372,7 @@ class Helpers
 
                 // Output the result
                 $data['food_variations'] = $finalJson;
+                $data['food_variations'] ='sssssssssssssssss';
             }else{
                 $data['food_variations'] ='';
             }
