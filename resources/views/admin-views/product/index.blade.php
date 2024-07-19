@@ -702,21 +702,23 @@
 
         function add_new_row_button(data) {
             count = data;
+            const languages = @json(json_decode($language));
+
             countRow = 1 + $('#option_price_view_' + data).children('.add_new_view_row_class').length;
             let add_new_row_view = `
         <div class="row add_new_view_row_class mb-3 position-relative pt-3 pt-sm-0">`;
 
-        @foreach (json_decode($language) as $lang)
+            languages.forEach(lang => {
         add_new_row_view += `
             <div class="col-md-4 col-sm-5">
-                <label for="">{{ translate('Option_name') }}_`+$lang+`</label>
-                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_`+$lang+`]" id="">
+                <label for="">{{ translate('Option_name') }}_`+lang+`</label>
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_`+lang+`]" id="">
             </div>
             <div class="col-md-4 col-sm-5">
                 <label for="">{{ translate('Additional_price') }}</label>
                 <input class="form-control" required type="number" min="0" step="0.01" name="options[` + count + `][values][` + countRow + `][optionPrice]" id="">
             </div>`;
-        @endforeach
+        });
 
         add_new_row_view += `
             <div class="col-sm-2 max-sm-absolute">
