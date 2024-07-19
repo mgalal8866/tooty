@@ -158,6 +158,61 @@ class Item extends Model
 
         return $value;
     }
+    public function getFoodVariationsAttribute($value){
+        // if (count($this->translations) > 0) {
+        //     foreach ($this->translations as $translation) {
+        //         if ($translation['key'] == 'name') {
+        //             return $translation['value'];
+        //         }
+        //     }
+        // }
+
+        return $translation;
+
+        // if($data['food_variations']){
+        //     foreach (json_decode($data['food_variations'], true) as $value) {
+        //         $categories[] = ['id' => (string)$value->id, 'position' => $value->position];
+        //     }
+
+
+        //     $foodVariations = json_decode($data['food_variations'], true);
+
+        //     // Initialize the result array
+        //     $result = [];
+
+        //     // Iterate through each food variation
+        //     foreach ($foodVariations as $variation) {
+        //         // Create a new array with the required structure
+        //         $newVariation = [
+        //             'name' => $variation["name_$local"],
+        //             'type' => $variation['type'],
+        //             'min' => $variation['min'],
+        //             'max' => $variation['max'],
+        //             'required' => $variation['required'],
+        //             'values' => []
+        //         ];
+
+        //         // Iterate through the values and update labels
+        //         foreach ($variation['values'] as $value) {
+        //             $newValue = [
+        //                 'label' => $value["label_$local"],
+        //                 'optionPrice' => $value['optionPrice']
+        //             ];
+        //             $newVariation['values'][] = $newValue;
+        //         }
+
+        //         $result[] = $newVariation;
+        //     }
+
+        //     // Encode the result back to JSON
+        //     $finalJson = json_encode($result, JSON_PRETTY_PRINT);
+
+        //     // Output the result
+        //     $data['food_variations'] = $finalJson;
+        // }else{
+        //     $data['food_variations'] ='';
+        // }
+    }
 
     public function getDescriptionAttribute($value){
         if (count($this->translations) > 0) {
