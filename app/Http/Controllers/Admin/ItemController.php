@@ -269,8 +269,8 @@ class ItemController extends Controller
                 $temp_value = [];
 
                 foreach (array_values($option['values']) as $value) {
-                    if(isset($value['label'])){
-                        $temp_option['label'] = $value['label'];
+                    if(isset($value['label_Default'])){
+                        $temp_option['label'] = $value['label_Default'];
                     }
                     foreach (json_decode($langdata) as $lang) {
                         if (isset($value['label_' . $lang])) {
