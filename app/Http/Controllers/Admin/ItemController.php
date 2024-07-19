@@ -240,12 +240,12 @@ class ItemController extends Controller
         // food variation
         $food_variations = [];
         if (isset($request->options)) {
-            $lang =    BusinessSetting::where('key', 'language')->first();
+            $langdata =    BusinessSetting::where('key', 'language')->first();
             foreach (array_values($request->options) as $key => $option) {
                 $temp_variation['name_Default'] = $option['name_Default'];
 
-                foreach (json_decode($lang) as $lan) {
-                    $temp_variation['name_' . $lan] = $option['name_' . $lan];
+                foreach (json_decode($langdata) as $lang) {
+                    $temp_variation['name_' . $lang] = $option['name_' . $lang];
                 }
 
                 $temp_variation['type'] = $option['type'];
@@ -270,9 +270,9 @@ class ItemController extends Controller
                     if(isset($value['label'])){
                         $temp_option['label'] = $value['label'];
                     }
-                    foreach (json_decode($lang) as $lan) {
-                        if (isset($value['label_' . $lan])) {
-                            $temp_option['label_' . $lan] = $value['label_' . $lan];
+                    foreach (json_decode($langdata) as $lang) {
+                        if (isset($value['label_' . $lang])) {
+                            $temp_option['label_' . $lang] = $value['label_' . $lang];
                         }
                     }
                     $temp_option['optionPrice'] = $value['optionPrice'];
