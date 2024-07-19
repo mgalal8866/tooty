@@ -4056,7 +4056,7 @@ class Helpers
 
             $foodVariations = json_decode($var, true);
 
-            // Initialize the result array
+
             $result = [];
 
             // Iterate through each food variation
@@ -4082,13 +4082,10 @@ class Helpers
 
                 $result[] = $newVariation;
             }
-// dd($result);
-            // Encode the result back to JSON
-            // $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-            // Output the result
-            // return    $foodVariations;result
-            return  $foodVariations = json_decode( $result, true);;
+
+            return json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
 
         }else{
           return '';
