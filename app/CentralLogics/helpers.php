@@ -255,7 +255,8 @@ class Helpers
                     ]);
                 }
                 $item['variations'] = $variations;
-                $item['food_variations'] = $item['food_variations']?json_decode($item['food_variations'], true):'';
+                // $item['food_variations'] = $item['food_variations']?json_decode($item['food_variations'], true):'';
+                Helpers::handelfood_variations( $item['food_variations'] ,$local);
                 $item['module_type'] = $item->module->module_type;
                 $item['store_name'] = $item->store?->name;
                 $item['is_campaign'] = $item->store?->campaigns_count>0?1:0;
@@ -333,52 +334,8 @@ class Helpers
                 unset($data['end_date']);
             }
             $data['variations'] = $variations;
-            if($data['food_variations']){
-                foreach (json_decode($data['food_variations'], true) as $value) {
-                    $categories[] = ['id' => (string)$value->id, 'position' => $value->position];
-                }
+            Helpers::handelfood_variations( $data['food_variations'] ,$local);
 
-
-                $foodVariations = json_decode($data['food_variations'], true);
-
-                // Initialize the result array
-                $result = [];
-
-                // Iterate through each food variation
-                foreach ($foodVariations as $variation) {
-                    // Create a new array with the required structure
-                    $newVariation = [
-                        'name' => $variation["name_$local"],
-                        'type' => $variation['type'],
-                        'min' => $variation['min'],
-                        'max' => $variation['max'],
-                        'required' => $variation['required'],
-                        'values' => []
-                    ];
-
-                    // Iterate through the values and update labels
-                    foreach ($variation['values'] as $value) {
-                        $newValue = [
-                            'label' => $value["label_$local"],
-                            'optionPrice' => $value['optionPrice']
-                        ];
-                        $newVariation['values'][] = $newValue;
-                    }
-
-                    $result[] = $newVariation;
-                }
-
-                // Encode the result back to JSON
-                $finalJson = json_encode($result, JSON_PRETTY_PRINT);
-
-                // Output the result
-                $data['food_variations'] = $finalJson;
-                $data['food_variations'] ='sssssssssssssssss';
-            }else{
-                $data['food_variations'] ='';
-            }
-
-               dd( $data['food_variations'] );
              $data['store_name'] = $data->store->name;
             $data['is_campaign'] = $data->store?->campaigns_count>0?1:0;
             $data['module_type'] = $data->module->module_type;
@@ -4092,6 +4049,51 @@ class Helpers
         }
         return $data;
     }
+
+
+    public static  function handelfood_variations($var,$local){
+        if($var){
+
+            $foodVariations = json_decode($var, true);
+
+            // Initialize the result array
+            $result = [];
+
+            // Iterate through each food variation
+            foreach ($foodVariations as $variation) {
+                // Create a new array with the required structure
+                $newVariation = [
+                    'name' => $variation["name_$local"],
+                    'type' => $variation['type'],
+                    'min' => $variation['min'],
+                    'max' => $variation['max'],
+                    'required' => $variation['required'],
+                    'values' => []
+                ];
+
+                // Iterate through the values and update labels
+                foreach ($variation['values'] as $value) {
+                    $newValue = [
+                        'label' => $value["label_$local"],
+                        'optionPrice' => $value['optionPrice']
+                    ];
+                    $newVariation['values'][] = $newValue;
+                }
+
+                $result[] = $newVariation;
+            }
+
+            // Encode the result back to JSON
+            $finalJson = json_encode($result, JSON_PRETTY_PRINT);
+
+            // Output the result
+            return  $finalJson;
+
+        }else{
+          return '';
+        }
+    }
+
 }
 
 
