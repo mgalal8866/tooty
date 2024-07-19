@@ -4058,7 +4058,7 @@ class Helpers
 
             // Initialize the result array
             $result = [];
- 
+
             // Iterate through each food variation
             foreach ($foodVariations as $variation) {
                 // Create a new array with the required structure
@@ -4087,7 +4087,7 @@ class Helpers
             // $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
             // Output the result
-            return  $result;
+            return    $foodVariations;
             // return  $finalJson;
 
         }else{
