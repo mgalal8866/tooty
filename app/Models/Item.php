@@ -159,15 +159,15 @@ class Item extends Model
         return $value;
     }
     public function getFoodVariationsAttribute($value){
-        // if (count($this->translations) > 0) {
-        //     foreach ($this->translations as $translation) {
-        //         if ($translation['key'] == 'name') {
-        //             return $translation['value'];
-        //         }
-        //     }
-        // }
+        if (count($this->translations) > 0) {
+            foreach ($this->translations as $translation) {
+                return $translation;
+                // if ($translation['key'] == 'name') {
+                //     return $translation['value'];
+                // }
+            }
+        }
 
-        return $translation;
 
         // if($data['food_variations']){
         //     foreach (json_decode($data['food_variations'], true) as $value) {
