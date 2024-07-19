@@ -4084,11 +4084,11 @@ class Helpers
             }
 // dd($result);
             // Encode the result back to JSON
-            $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            // $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
             // Output the result
             // return    $foodVariations;
-            return  $finalJson;
+            return  $foodVariations = json_decode( $finalJson, true);;
 
         }else{
           return '';
