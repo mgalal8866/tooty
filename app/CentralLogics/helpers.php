@@ -334,7 +334,7 @@ class Helpers
                 unset($data['end_date']);
             }
             $data['variations'] = $variations;
-            Helpers::handelfood_variations( $data['food_variations'] ,$local);
+            $item['food_variations'] =  Helpers::handelfood_variations( $data['food_variations'] ,$local);
 
              $data['store_name'] = $data->store->name;
             $data['is_campaign'] = $data->store?->campaigns_count>0?1:0;
@@ -4084,11 +4084,11 @@ class Helpers
             }
 
             // Encode the result back to JSON
-            // $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $finalJson = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
             // Output the result
-            return    $foodVariations;
-            // return  $finalJson;
+            // return    $foodVariations;
+            return  $finalJson;
 
         }else{
           return '';
