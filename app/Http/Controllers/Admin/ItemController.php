@@ -49,7 +49,7 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
- 
+
         $validator = Validator::make($request->all(), [
             'name.0' => 'required',
             'name.*' => 'max:191',
@@ -247,7 +247,7 @@ class ItemController extends Controller
 
                 foreach (json_decode($langdata) as $lang) {
 
-                    $temp_variation['name_' . $lang] = $option['name_' . $lang];
+                    $temp_variation['name_' . $lang] = $option['name_' . $lang]??'';
                 }
 
                 $temp_variation['type'] = $option['type'];
@@ -274,7 +274,7 @@ class ItemController extends Controller
                     }
                     foreach (json_decode($langdata) as $lang) {
                         if (isset($value['label_' . $lang])) {
-                            $temp_option['label_' . $lang] = $value['label_' . $lang];
+                            $temp_option['label_' . $lang] = $value['label_' . $lang]??'';
                         }
                     }
                     $temp_option['optionPrice'] = $value['optionPrice'];
@@ -511,7 +511,7 @@ class ItemController extends Controller
 
                 foreach (json_decode($langdata) as $lang) {
 
-                    $temp_variation['name_' . $lang] = $option['name_' . $lang];
+                    $temp_variation['name_' . $lang] = $option['name_' . $lang]??'';
                 }
 
                 $temp_variation['type'] = $option['type'];
@@ -537,7 +537,7 @@ class ItemController extends Controller
                     }
                     foreach (json_decode($langdata) as $lang) {
                         if (isset($value['label_' . $lang])) {
-                            $temp_option['label_' . $lang] = $value['label_' . $lang];
+                            $temp_option['label_' . $lang] = $value['label_' . $lang]??'';
                         }
                     }
 
