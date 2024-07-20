@@ -508,7 +508,7 @@ class ItemController extends Controller
 
             foreach (array_values($request->options) as $key => $option) {
 
-                    $temp_variation['name'] = $option['name_Default']??'';
+                    $temp_variation['name'] = $option['name']??'';
 
                 foreach (json_decode($langdata) as $lang) {
 
@@ -534,7 +534,7 @@ class ItemController extends Controller
                 $temp_value = [];
                 foreach (array_values($option['values']) as $value) {
 
-                        $temp_option['label'] = $value['label_Default']??'';
+                        $temp_option['label'] = $value['label']??'';
 
                     foreach (json_decode($langdata) as $lang) {
                         if (isset($value['label_' . $lang])) {
