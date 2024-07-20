@@ -753,8 +753,10 @@
     $(document).ready(function() {
         $("#add_new_option_button").click(function(e) {
             $('#empty-variation').hide();
+            const languages = @json(json_decode($language));
+
             count++;
-            let add_option_view = `
+           let add_option_view = `
                     <div class="__bg-F8F9FC-card count_div view_new_option mb-2">
                         <div>
                             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -763,6 +765,7 @@
                                     <span class="form-check-label">{{ translate('Required') }}</span>
                                 </label>
                                 <div>
+
                                     <button type="button" class="btn btn-danger btn-sm delete_input_button"
                                         title="{{ translate('Delete') }}">
                                         <i class="tio-add-to-trash"></i>
@@ -770,14 +773,25 @@
                                 </div>
                             </div>
                             <div class="row g-2">
-                                <div class="col-xl-4 col-lg-6">
-                                    <label for="">{{ translate('name') }}</label>
+                                   <div class="col-xl-2 col-lg-3">
+                                    <label for="">{{ translate('name') }}_Default</label>
                                     <input required name=options[` + count +
-                `][name] class="form-control new_option_name" type="text" data-count="`+
-                count +`">
-                                </div>
+                    `][name_Default] class="form-control new_option_name" type="text" data-count="` +
+                    count + `">
+                                </div>`;
 
-                                <div class="col-xl-4 col-lg-6">
+
+
+
+                languages.forEach(lang => {
+            add_option_view +=`<div class="col-xl-2 col-lg-3">
+                                    <label for="">{{ translate('name') }}_`+lang+`</label>
+                                    <input required name=options[` + count + `][name_`+lang+`] class="form-control new_option_name" type="text" data-count="`
+                                     +count + `">
+                                </div>`;
+                            });
+
+                            add_option_view +=`<div class="col-xl-4 col-lg-6">
                                     <div>
                                         <label class="input-label text-capitalize d-flex align-items-center"><span class="line--limit-1">{{ translate('messages.selcetion_type') }} </span>
                                         </label>
@@ -822,13 +836,24 @@
                                 <div class="bg-white border rounded p-3 pb-0 mt-3">
                                     <div  id="option_price_view_` + count + `">
                                         <div class="row g-3 add_new_view_row_class mb-3">
-                                            <div class="col-md-4 col-sm-6">
-                                                <label for="">{{ translate('Option_name') }}</label>
-                                                <input class="form-control" required type="text" name="options[` +
-                count +
-                `][values][0][label]" id="">
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
+
+                                                                           <div class="col-md-2 col-sm-3">
+                <label for="">{{ translate('Option_name') }}_Default</label>
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_Default]" id="">
+            </div>
+                                           `;
+
+                languages.forEach(lang => {
+                    add_option_view +=
+                        `<div class="col-md-2 col-sm-3">
+                                             <label for="">{{ translate('Option_name') }}_${lang}</label>
+                <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label_${lang}]" id="">
+                                            </div>`;
+                });
+
+                add_option_view +=
+
+                                            `<div class="col-md-4 col-sm-6">
                                                 <label for="">{{ translate('Additional_price') }}</label>
                                                 <input class="form-control" required type="number" min="0" step="0.01" name="options[` +
                 count + `][values][0][optionPrice]" id="">

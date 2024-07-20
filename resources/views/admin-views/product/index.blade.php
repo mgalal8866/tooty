@@ -654,12 +654,10 @@
                                 </div>`;
 
                 languages.forEach(lang => {
- add_option_view +=`
-                                <div class="col-xl-2 col-lg-3">
+ add_option_view +=`<div class="col-xl-2 col-lg-3">
                                     <label for="">{{ translate('name') }}_`+lang+`</label>
-                                    <input required name=options[` + count +
-                    `][name_`+lang+`] class="form-control new_option_name" type="text" data-count="` +
-                    count + `">
+                                    <input required name=options[` + count + `][name_`+lang+`] class="form-control new_option_name" type="text" data-count="`
+                                     +count + `">
                                 </div>`;
                             });
                             add_option_view +=

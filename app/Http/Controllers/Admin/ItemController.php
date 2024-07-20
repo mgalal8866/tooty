@@ -1785,4 +1785,3 @@ class ItemController extends Controller
         return view('admin-views.product.product_gallery', compact('items', 'store', 'category', 'type'));
     }
 }
-                                                  
