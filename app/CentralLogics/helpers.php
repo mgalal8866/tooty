@@ -4121,8 +4121,7 @@ class Helpers
             }
             // Return default value if no range is matched
             return 4000; // Updated default value for values greater than the highest range
-        }
-
+     
 
         // if($var <= 250){
         //     return 250;
