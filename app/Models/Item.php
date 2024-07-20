@@ -158,8 +158,8 @@ class Item extends Model
 
         return $value;
     }
-    public function getFoodVariationsAttribute($value){
-        return 'ddd';
+    // public function getFoodVariationsAttribute($value){
+        // return 'ddd';
     //     if (count($this->translations) > 0) {
     //         foreach ($this->translations as $translation) {
     //             return $value;
@@ -213,7 +213,7 @@ class Item extends Model
     //     // }else{
     //     //     $data['food_variations'] ='';
     //     // }
-    }
+    // }
 
     public function getDescriptionAttribute($value){
         if (count($this->translations) > 0) {
