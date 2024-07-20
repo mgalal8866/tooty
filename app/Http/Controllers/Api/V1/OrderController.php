@@ -1004,6 +1004,7 @@ class OrderController extends Controller
     }
     public function prescription_place_order(Request $request)
     {
+        dd('');
         $validator = Validator::make($request->all(), [
             'store_id' => 'required_unless:order_type,parcel',
             'order_attachment' => 'required',
