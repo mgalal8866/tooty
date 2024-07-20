@@ -3265,7 +3265,7 @@ class Helpers
     }
 
     public static function get_food_variations($variations){
-        // return Helpers::handelfood_variations($variations)
+        return Helpers::handelfood_variations($variations);
         try{
             $data=[];
             $data2=[];

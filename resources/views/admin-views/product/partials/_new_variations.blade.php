@@ -23,6 +23,13 @@
                     value="{{ $item['name'] }}">
             </div>
             @endif
+            <div class="col-xl-4 col-lg-6">
+                <label for="">{{ translate('name') }}_Default</label>
+                <input required name="options[{{ $key }}][name_Default]" class="form-control new_option_name"
+                    type="text" data-count="{{ $key }}"
+                    value="{{ $item['name_'.$lang] }}">
+                    @endif
+            </div>
             @foreach (json_decode($language) as $lang)
             @if(isset($item['name_'.$lang]))
             <div class="col-xl-4 col-lg-6">
@@ -32,8 +39,8 @@
                     value="{{ $item['name_'.$lang] }}">
                     @endif
             </div>
-     
-                
+
+
             @endforeach
             <div class="col-xl-4 col-lg-6">
                 <div class="form-group">
@@ -95,6 +102,12 @@
                                     value="{{ $value['label' ] }}">
                             </div>
                             @endif
+                            <div class="col-md-4 col-sm-6">
+                                <label for="">{{ translate('Option_name') }}_Default</label>
+                                <input class="form-control" required type="text"
+                                    name="options[{{ $key }}][values][{{ $key_value }}][label_Default]"
+                                    value="{{ $value['label_'. $lang ] }}">
+                            </div>
                             @foreach (json_decode($language) as $lang)
                             @if(isset($value['label_'. $lang ]))
                             <div class="col-md-4 col-sm-6">
