@@ -3678,8 +3678,6 @@ class Helpers
 
     return $data?? [];
     }
-
-
     public static function send_push_notif_for_demo_reset($data, $topic, $type,)
     {
         $postData = [
@@ -3697,7 +3695,6 @@ class Helpers
 
         return self::sendNotificationToHttp($postData);
     }
-
 
     public static function subscriptionConditionsCheck($store_id ,$package_id,){
         $store=Store::findOrFail($store_id);
@@ -4090,6 +4087,71 @@ class Helpers
           return '';
         }
     }
+
+
+    public static  function hdcharge($var = 250){
+
+
+            // Define the ranges and corresponding charges
+            $ranges = [
+                250 => 250,
+                500 => 500,
+                750 => 750,
+                1000 => 1000,
+                1250 => 1250,
+                1500 => 1500,
+                1750 => 1750,
+                2000 => 2000,
+                2250 => 2250,
+                2500 => 2500,
+                2750 => 2750,
+                3000 => 3000,
+                3500 => 3500,  // Added new range
+                4000 => 4000   // Added new range
+            ];
+
+            // Loop through the ranges and return the appropriate charge
+            foreach ($ranges as $limit => $charge) {
+                if ($var <= $limit) {
+                    return $charge;
+                }
+            }
+            if($var == 0){
+                return 0;
+            }
+            // Return default value if no range is matched
+            return 4000; // Updated default value for values greater than the highest range
+        }
+
+
+        // if($var <= 250){
+        //     return 250;
+        // }elseif ($var >= 251 && $var <= 500){
+        //     return 500;
+        // }elseif ($var >= 501 && $var <= 750){
+        //     return 750;
+
+        // }elseif ($var >= 751 && $var <= 1000){
+        //     return 1000;
+        // }elseif ($var >= 1001 && $var <= 1250){
+        //     return 1250;
+        // }elseif ($var >= 1251 && $var <= 1500){
+        //     return 1500;
+        // }elseif ($var >= 1501 && $var <= 1750){
+        //     return 1750;
+        // }elseif ($var >= 1751 && $var <= 2000){
+        //     return 2000;
+
+        // }elseif ($var >= 2001 && $var <= 2249){
+        //     return 2250;
+
+        // }elseif ($var >= 2251 && $var <= 2449){
+        //     return 2500;
+        // }
+
+
+    }
+
 
 }
 
