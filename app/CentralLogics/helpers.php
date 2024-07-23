@@ -991,8 +991,8 @@ class Helpers
         }
         $data = $storage;
 
-        return $data;
         dd( $data);
+        return $data;
         }
 
     public static function deliverymen_list_formatting($data)
