@@ -335,7 +335,7 @@ class OrderController extends Controller
                 $vehicle_id = null;
                 $increased = 0;
             }
-            Log::error('delivery_charge1 = '.$delivery_charge);
+            // Log::error('delivery_charge1 = '.$delivery_charge);
             if ($store->free_delivery || $free_delivery_by == 'vendor') {
                 $per_km_shipping_charge = $store->per_km_shipping_charge;
                 $minimum_shipping_charge = $store->minimum_shipping_charge;
@@ -343,7 +343,7 @@ class OrderController extends Controller
                 $extra_charges = 0;
                 $increased = 0;
             }
-            Log::error('delivery_charge2 = '.$delivery_charge);
+            // Log::error('delivery_charge2 = '.$delivery_charge);
             $original_delivery_charge = (($request->distance * $per_km_shipping_charge) > $minimum_shipping_charge) ? $request->distance * $per_km_shipping_charge  : $minimum_shipping_charge;
 
             if ($request['order_type'] == 'take_away') {
@@ -356,21 +356,21 @@ class OrderController extends Controller
                 $original_delivery_charge = 0;
                 $increased = 0;
             }
-            Log::error('delivery_charge3 = '.$delivery_charge);
+            // Log::error('delivery_charge3 = '.$delivery_charge);
             if ($maximum_shipping_charge  >= $minimum_shipping_charge  && $original_delivery_charge >  $maximum_shipping_charge) {
                 $original_delivery_charge = $maximum_shipping_charge;
             } else {
                 $original_delivery_charge = $original_delivery_charge;
             }
 
-            Log::error('minimum_shipping_charge-1 = '. $minimum_shipping_charge);
-            Log::error('per_km_shipping_charge-1 = '. $per_km_shipping_charge);
+            // Log::error('minimum_shipping_charge-1 = '. $minimum_shipping_charge);
+            // Log::error('per_km_shipping_charge-1 = '. $per_km_shipping_charge);
             if (!isset($delivery_charge)) {
                 $delivery_charge = ($request->distance * $per_km_shipping_charge > $minimum_shipping_charge) ? $request->distance * $per_km_shipping_charge : $minimum_shipping_charge;
-                Log::error('delivery_charge3-1 = '.$delivery_charge);
-                Log::error('minimum_shipping_charge-1 = '. $minimum_shipping_charge);
-                Log::error('per_km_shipping_charge-1 = '. $per_km_shipping_charge);
-                Log::error('distance-1 = '.$request->distance);
+                // Log::error('delivery_charge3-1 = '.$delivery_charge);
+                // Log::error('minimum_shipping_charge-1 = '. $minimum_shipping_charge);
+                // Log::error('per_km_shipping_charge-1 = '. $per_km_shipping_charge);
+                // Log::error('distance-1 = '.$request->distance);
 
                 if ($maximum_shipping_charge  >= $minimum_shipping_charge  && $delivery_charge >  $maximum_shipping_charge) {
                     $delivery_charge = $maximum_shipping_charge;
@@ -378,14 +378,18 @@ class OrderController extends Controller
                 } else {
                     $delivery_charge = $delivery_charge;
 
-                    Log::error('delivery_charge3-3 = '.$delivery_charge);
+                    $delivery_charge = Helpers::hdcharge($delivery_charge);
+
+
+                    // Log::error('delivery_charge3-3 = '.$delivery_charge);
                 }
             }
-            Log::error('delivery_charge4 = '.$delivery_charge);
+            // Log::error('delivery_charge4 = '.$delivery_charge);
             $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
             $delivery_charge = $original_delivery_charge != 0? Helpers::hdcharge($delivery_charge):0;
 
             $original_delivery_charge = $original_delivery_charge + $extra_charges;
+
             $delivery_charge = $delivery_charge + $extra_charges;
         } else {
             $parcel_category = ParcelCategory::findOrFail($request->parcel_category_id);
@@ -399,6 +403,8 @@ class OrderController extends Controller
 
             $original_delivery_charge = (($request->distance * $per_km_shipping_charge) > $minimum_shipping_charge) ? ($request->distance * $per_km_shipping_charge) + $extra_charges : ($minimum_shipping_charge + $extra_charges);
             $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
+            $original_delivery_charge = Helpers::hdcharge($original_delivery_charge);
+
         }
         Log::error('extra_charges = '.$extra_charges);
         Log::error('delivery_charge5 = '.$delivery_charge);
@@ -465,6 +471,10 @@ class OrderController extends Controller
         $order->order_type = $request['order_type'];
         $order->store_id = $request['store_id'];
         Log::error('delivery_charge7 = '.$delivery_charge);
+        if($delivery_charge!=0){
+
+            $delivery_charge = Helpers::hdcharge($delivery_charge);
+        }
         $order->delivery_charge = round($delivery_charge, config('round_up_to_digit')) ?? 0;
         $order->original_delivery_charge = round($original_delivery_charge, config('round_up_to_digit'));
         $order->delivery_address = json_encode($address);
