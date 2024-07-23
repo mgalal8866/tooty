@@ -363,13 +363,15 @@ class OrderController extends Controller
                 $original_delivery_charge = $original_delivery_charge;
             }
 
+            Log::error('minimum_shipping_charge-1 = '. $minimum_shipping_charge);
+            Log::error('per_km_shipping_charge-1 = '. $per_km_shipping_charge);
             if (!isset($delivery_charge)) {
                 $delivery_charge = ($request->distance * $per_km_shipping_charge > $minimum_shipping_charge) ? $request->distance * $per_km_shipping_charge : $minimum_shipping_charge;
                 Log::error('delivery_charge3-1 = '.$delivery_charge);
                 Log::error('minimum_shipping_charge-1 = '. $minimum_shipping_charge);
                 Log::error('per_km_shipping_charge-1 = '. $per_km_shipping_charge);
                 Log::error('distance-1 = '.$request->distance);
-        
+
                 if ($maximum_shipping_charge  >= $minimum_shipping_charge  && $delivery_charge >  $maximum_shipping_charge) {
                     $delivery_charge = $maximum_shipping_charge;
                     Log::error('delivery_charge3-2 = '.$delivery_charge);
