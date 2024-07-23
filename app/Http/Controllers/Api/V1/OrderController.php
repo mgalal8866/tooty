@@ -924,7 +924,7 @@ class OrderController extends Controller
             }
             if (!isset($request->is_buy_now) || (isset($request->is_buy_now) && $request->is_buy_now == 0)) {
                 foreach ($carts as $cart) {
-                    $cart->delete();
+                    // $cart->delete();
                 }
             }
             if ($request->user) {
