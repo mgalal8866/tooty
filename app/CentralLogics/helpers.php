@@ -986,7 +986,7 @@ class Helpers
                 $itemDetails['food_variations'] = Helpers::handelfood_variations($itemDetails['food_variations'], $local);
             }
 
-      
+
             if ($item['item_id']){
                 $product = \App\Models\Item::where(['id' =>   $itemDetails['id']])->first();
                 $item['image_full_url'] = $product->image_full_url;
@@ -997,8 +997,7 @@ class Helpers
                 $item['images_full_url'] = [];
             }
 
-            $item['item_details'] = $itemDetails;
-           dd( $item['item_details']['food_variations']);
+          
             array_push($storage, $item);
         }
         $data = $storage;
