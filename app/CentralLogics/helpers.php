@@ -980,7 +980,7 @@ class Helpers
             $item['add_ons'] = json_decode($item['add_ons']);
             $item['variation'] = json_decode($item['variation'], true);
             $item['item_details'] = json_decode($item['item_details'], true);
-            var_dump($item['item_details']['food_variations']);
+            
             $ff = Helpers::handelfood_variations($item['item_details']['food_variations'],$local);
             $item['item_details']['food_variations'] =  $ff;
 
