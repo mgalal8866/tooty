@@ -369,8 +369,8 @@ class OrderController extends Controller
                     $delivery_charge = $delivery_charge;
                 }
             }
-            $original_delivery_charge = Helpers::hdcharge($original_delivery_charge);
-            $delivery_charge = Helpers::hdcharge($delivery_charge);
+            $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
+            $delivery_charge = $original_delivery_charge != 0? Helpers::hdcharge($delivery_charge):0;
 
             $original_delivery_charge = $original_delivery_charge + $extra_charges;
             $delivery_charge = $delivery_charge + $extra_charges;
@@ -385,7 +385,7 @@ class OrderController extends Controller
             }
 
             $original_delivery_charge = (($request->distance * $per_km_shipping_charge) > $minimum_shipping_charge) ? ($request->distance * $per_km_shipping_charge) + $extra_charges : ($minimum_shipping_charge + $extra_charges);
-            $original_delivery_charge = Helpers::hdcharge($original_delivery_charge);
+            $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
         }
 
 
