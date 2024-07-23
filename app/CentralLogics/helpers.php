@@ -975,8 +975,9 @@ class Helpers
 
         $storage = [];
         foreach ($data as $item) {
+            $ff = Helpers::handelfood_variations($item['food_variations'],$local);
             $item['add_ons'] = json_decode($item['add_ons']);
-            $item['food_variations'] = Helpers::handelfood_variations($item['food_variations'],$local);
+            $item['food_variations'] =  $ff;
             $item['variation'] = json_decode($item['variation'], true);
             $item['item_details'] = json_decode($item['item_details'], true);
             if ($item['item_id']){
@@ -4053,6 +4054,7 @@ class Helpers
 
 
     public static  function handelfood_variations($var,$local){
+        dd($var);
         if($var){
 
             $foodVariations = json_decode($var, true);
