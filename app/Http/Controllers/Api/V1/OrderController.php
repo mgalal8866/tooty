@@ -394,7 +394,7 @@ class OrderController extends Controller
             $original_delivery_charge = (($request->distance * $per_km_shipping_charge) > $minimum_shipping_charge) ? ($request->distance * $per_km_shipping_charge) + $extra_charges : ($minimum_shipping_charge + $extra_charges);
             $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
         }
-        Log::error('extra_charges = '.$$extra_charges);
+        Log::error('extra_charges = '.$extra_charges);
         Log::error('delivery_charge5 = '.$delivery_charge);
 
         if ($increased > 0) {
