@@ -972,6 +972,7 @@ class Helpers
 
     public static function order_details_data_formatting($data,$local ='en')
     {
+        dd($local);
         $storage = [];
         foreach ($data as $item) {
             $item['add_ons'] = json_decode($item['add_ons']);
