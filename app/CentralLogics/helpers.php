@@ -992,7 +992,8 @@ class Helpers
         $data = $storage;
 
         return $data;
-    }
+        dd( $data);
+        }
 
     public static function deliverymen_list_formatting($data)
     {
@@ -4100,16 +4101,7 @@ class Helpers
                 500 => 500,
                 750 => 750,
                 1000 => 1000,
-                1250 => 1250,
-                1500 => 1500,
-                1750 => 1750,
-                2000 => 2000,
-                2250 => 2250,
-                2500 => 2500,
-                2750 => 2750,
-                3000 => 3000,
-                3500 => 3500,  // Added new range
-                4000 => 4000   // Added new range
+                 // Added new range
             ];
 
             // Loop through the ranges and return the appropriate charge
@@ -4122,7 +4114,7 @@ class Helpers
                 return 0;
             }
             // Return default value if no range is matched
-            return 4000; // Updated default value for values greater than the highest range
+            return 1000; // Updated default value for values greater than the highest range
 
 
         // if($var <= 250){
