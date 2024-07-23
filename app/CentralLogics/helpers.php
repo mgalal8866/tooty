@@ -970,12 +970,12 @@ class Helpers
         return $data;
     }
 
-    public static function order_details_data_formatting($data)
+    public static function order_details_data_formatting($data,$local ='en')
     {
         $storage = [];
         foreach ($data as $item) {
             $item['add_ons'] = json_decode($item['add_ons']);
-            $item['food_variations'] = json_decode($item['food_variations']);
+            $item['food_variations'] = Helpers::handelfood_variations($item['food_variations'],$local);
             $item['variation'] = json_decode($item['variation'], true);
             $item['item_details'] = json_decode($item['item_details'], true);
             if ($item['item_id']){
