@@ -975,14 +975,15 @@ class Helpers
 
         $storage = [];
         foreach ($data as $item) {
-            var_dump($item['item_details']['food_variations']);
             // var_dump($item->food_variations);
             // var_dump($item);
-            $ff = Helpers::handelfood_variations($item['item_details']['food_variations'],$local);
             $item['add_ons'] = json_decode($item['add_ons']);
-            $item['food_variations'] =  $ff;
             $item['variation'] = json_decode($item['variation'], true);
             $item['item_details'] = json_decode($item['item_details'], true);
+            var_dump($item['item_details']['food_variations']);
+            $ff = Helpers::handelfood_variations($item['item_details']['food_variations'],$local);
+            $item['item_details']['food_variations'] =  $ff;
+
             if ($item['item_id']){
                 $product = \App\Models\Item::where(['id' => $item['item_details']['id']])->first();
                 $item['image_full_url'] = $product->image_full_url;
