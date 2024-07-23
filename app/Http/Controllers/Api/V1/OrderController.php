@@ -84,6 +84,7 @@ class OrderController extends Controller
 
     public function place_order(Request $request)
     {
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'order_amount' => 'required',
             'payment_method' => 'required|in:cash_on_delivery,digital_payment,wallet,offline_payment',
