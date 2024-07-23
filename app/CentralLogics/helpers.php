@@ -4092,7 +4092,7 @@ class Helpers
 
 
         }else{
-          return '';
+          return null;
         }
     }
 
