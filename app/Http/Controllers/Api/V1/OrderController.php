@@ -1551,11 +1551,11 @@ class OrderController extends Controller
             })->find($request->order_id);
 
         $details = isset($order->details) ? $order->details : null ;
-        dd( $details);
         if ($details != null && $details->count() > 0) {
             $details = Helpers::order_details_data_formatting($details);
             // $details['store'] = $order['store'] ? Helpers::store_data_formatting($order['store']) : $order['store'];
             // $details['delivery_man'] = $order['delivery_man'] ? Helpers::deliverymen_data_formatting([$order['delivery_man']]) : $order['delivery_man'];
+            dd( $details);
             return response()->json($details, 200);
         } else if ($order->order_type == 'parcel' || $order->prescription_order == 1) {
             // $order['store'] = $order['store'] ? Helpers::store_data_formatting($order['store']) : $order['store'];
