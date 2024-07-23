@@ -901,8 +901,8 @@ class OrderController extends Controller
                 ]
             ], 203);
         }
-        Log::Error($request->all());
-        Log::Error($order);
+        // Log::Error($request->all());
+        // Log::Error($order);
 
         try {
             DB::beginTransaction();
