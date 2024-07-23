@@ -335,7 +335,7 @@ class OrderController extends Controller
                 $vehicle_id = null;
                 $increased = 0;
             }
-
+            Log::error('delivery_charge1 = '.$delivery_charge);
             if ($store->free_delivery || $free_delivery_by == 'vendor') {
                 $per_km_shipping_charge = $store->per_km_shipping_charge;
                 $minimum_shipping_charge = $store->minimum_shipping_charge;
@@ -343,7 +343,7 @@ class OrderController extends Controller
                 $extra_charges = 0;
                 $increased = 0;
             }
-
+            Log::error('delivery_charge2 = '.$delivery_charge);
             $original_delivery_charge = (($request->distance * $per_km_shipping_charge) > $minimum_shipping_charge) ? $request->distance * $per_km_shipping_charge  : $minimum_shipping_charge;
 
             if ($request['order_type'] == 'take_away') {
@@ -356,7 +356,7 @@ class OrderController extends Controller
                 $original_delivery_charge = 0;
                 $increased = 0;
             }
-
+            Log::error('delivery_charge3 = '.$delivery_charge);
             if ($maximum_shipping_charge  >= $minimum_shipping_charge  && $original_delivery_charge >  $maximum_shipping_charge) {
                 $original_delivery_charge = $maximum_shipping_charge;
             } else {
@@ -371,6 +371,7 @@ class OrderController extends Controller
                     $delivery_charge = $delivery_charge;
                 }
             }
+            Log::error('delivery_charge4 = '.$delivery_charge);
             $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
             $delivery_charge = $original_delivery_charge != 0? Helpers::hdcharge($delivery_charge):0;
 
@@ -389,7 +390,7 @@ class OrderController extends Controller
             $original_delivery_charge = (($request->distance * $per_km_shipping_charge) > $minimum_shipping_charge) ? ($request->distance * $per_km_shipping_charge) + $extra_charges : ($minimum_shipping_charge + $extra_charges);
             $original_delivery_charge =  $original_delivery_charge != 0? Helpers::hdcharge($original_delivery_charge):0;
         }
-
+        Log::error('delivery_charge5 = '.$delivery_charge);
 
         if ($increased > 0) {
             if ($delivery_charge > 0) {
@@ -405,7 +406,7 @@ class OrderController extends Controller
 
             }
         }
-
+        Log::error('delivery_charge6 = '.$delivery_charge);
         $address = [
             'contact_person_name' => $request->contact_person_name ? $request->contact_person_name : ($request->user ? $request->user->f_name . ' ' . $request->user->f_name : ''),
             'contact_person_number' => $request->contact_person_number ? ($request->user ? $request->contact_person_number : str_replace('+', '', $request->contact_person_number)) : ($request->user ? $request->user->phone : ''),
@@ -434,7 +435,7 @@ class OrderController extends Controller
             $order->id = Order::orderBy('id', 'desc')->first()->id + 1;
         }
 
-
+        Log::error('delivery_charge7 = '.$delivery_charge);
         $order_status = 'pending';
         if (($request->partial_payment && $request->payment_method != 'offline_payment') || $request->payment_method == 'wallet') {
             $order_status = 'confirmed';
@@ -452,6 +453,7 @@ class OrderController extends Controller
         $order->delivery_instruction = $request['delivery_instruction'];
         $order->order_type = $request['order_type'];
         $order->store_id = $request['store_id'];
+        Log::error('delivery_charge7 = '.$delivery_charge);
         $order->delivery_charge = round($delivery_charge, config('round_up_to_digit')) ?? 0;
         $order->original_delivery_charge = round($original_delivery_charge, config('round_up_to_digit'));
         $order->delivery_address = json_encode($address);
@@ -924,7 +926,7 @@ class OrderController extends Controller
             }
             if (!isset($request->is_buy_now) || (isset($request->is_buy_now) && $request->is_buy_now == 0)) {
                 foreach ($carts as $cart) {
-                    // $cart->delete();
+                    $cart->delete();
                 }
             }
             if ($request->user) {
