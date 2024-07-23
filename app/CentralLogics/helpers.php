@@ -4068,7 +4068,7 @@ class Helpers
 
             // Iterate through each food variation
             foreach ($foodVariations as $variation) {
-               
+
                 // Create a new array with the required structure
                 $newVariation = [
                     'name' => $variation["name_$local"]??($variation["name"]??'undefined'),
@@ -4095,7 +4095,7 @@ class Helpers
 
 
         }else{
-          return null;
+          return [];
         }
     }
 
