@@ -998,7 +998,7 @@ class Helpers
         }
         $data = $storage;
 
-dd( $data );
+
         return $data;
         }
 
@@ -4069,7 +4069,7 @@ dd( $data );
 
             // Iterate through each food variation
             foreach ($foodVariations as $variation) {
-                dd($variation);
+               
                 // Create a new array with the required structure
                 $newVariation = [
                     'name' => $variation["name_$local"]??($variation["name"]??'undefined'),
