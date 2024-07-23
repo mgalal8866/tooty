@@ -1555,7 +1555,7 @@ class OrderController extends Controller
             $details = Helpers::order_details_data_formatting($details);
             // $details['store'] = $order['store'] ? Helpers::store_data_formatting($order['store']) : $order['store'];
             // $details['delivery_man'] = $order['delivery_man'] ? Helpers::deliverymen_data_formatting([$order['delivery_man']]) : $order['delivery_man'];
-            dd($request->headers());
+            dd( $request->header('x-localization'));
             return response()->json($details, 200);
         } else if ($order->order_type == 'parcel' || $order->prescription_order == 1) {
             // $order['store'] = $order['store'] ? Helpers::store_data_formatting($order['store']) : $order['store'];
