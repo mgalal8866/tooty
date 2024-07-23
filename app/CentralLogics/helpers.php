@@ -975,7 +975,7 @@ class Helpers
 
         $storage = [];
         foreach ($data as $item) {
-            dd($item['food_variations']);
+            // dd($item['food_variations']);
             $ff = Helpers::handelfood_variations($item['food_variations'],$local);
             $item['add_ons'] = json_decode($item['add_ons']);
             $item['food_variations'] =  $ff;
