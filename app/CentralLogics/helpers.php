@@ -993,7 +993,7 @@ class Helpers
                 $item['image_full_url'] = $product->image_full_url;
                 $item['images_full_url'] = [];
             }
-           
+           dd( $item['item_details']['food_variations']);
             array_push($storage, $item);
         }
         $data = $storage;
