@@ -997,7 +997,8 @@ class Helpers
                 $item['images_full_url'] = [];
             }
 
-          
+            $item['item_details'] = $itemDetails;
+
             array_push($storage, $item);
         }
         $data = $storage;
