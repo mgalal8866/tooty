@@ -972,7 +972,7 @@ class Helpers
 
     public static function order_details_data_formatting($data,$local ='en')
     {
-        dd($local);
+
         $storage = [];
         foreach ($data as $item) {
             $item['add_ons'] = json_decode($item['add_ons']);
@@ -992,7 +992,7 @@ class Helpers
         }
         $data = $storage;
 
-        dd( $data);
+
         return $data;
         }
 
@@ -4062,6 +4062,7 @@ class Helpers
 
             // Iterate through each food variation
             foreach ($foodVariations as $variation) {
+                dd($variation);
                 // Create a new array with the required structure
                 $newVariation = [
                     'name' => $variation["name_$local"]??($variation["name"]??'undefined'),
