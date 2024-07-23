@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\OrderPayment;
-use App\Models\ParcelDeliveryInstruction;
 use Stripe\Product;
 use App\Models\Cart;
 use App\Models\Item;
+use App\Models\User;
 use App\Models\Zone;
 use App\Models\Admin;
 use App\Models\Order;
@@ -18,11 +17,13 @@ use App\Models\DMVehicle;
 use App\Mail\RefundRequest;
 use App\Models\OrderDetail;
 use App\Models\ItemCampaign;
+use App\Models\OrderPayment;
 use App\Models\RefundReason;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
 use App\Models\ParcelCategory;
 use App\Models\BusinessSetting;
+use App\Models\CashBackHistory;
 use App\Models\OfflinePayments;
 use App\CentralLogics\OrderLogic;
 use App\Models\OrderCancelReason;
@@ -30,12 +31,12 @@ use App\CentralLogics\CouponLogic;
 use Illuminate\Support\Facades\DB;
 use App\CentralLogics\ProductLogic;
 use App\Mail\OrderVerificationMail;
+use Illuminate\Support\Facades\Log;
 use App\CentralLogics\CustomerLogic;
 use App\Http\Controllers\Controller;
-use App\Models\CashBackHistory;
 use App\Models\OfflinePaymentMethod;
-use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use App\Models\ParcelDeliveryInstruction;
 use Illuminate\Support\Facades\Validator;
 use MatanYadaev\EloquentSpatial\Objects\Point;
 
@@ -84,7 +85,7 @@ class OrderController extends Controller
 
     public function place_order(Request $request)
     {
-        dd($request->all());
+
         $validator = Validator::make($request->all(), [
             'order_amount' => 'required',
             'payment_method' => 'required|in:cash_on_delivery,digital_payment,wallet,offline_payment',
@@ -898,6 +899,8 @@ class OrderController extends Controller
                 ]
             ], 203);
         }
+        Log::Error($request->all());
+        Log::Error($order);
 
         try {
             DB::beginTransaction();
