@@ -59,7 +59,7 @@ class ItemController extends Controller
                     return (Config::get('module.current_module_type') != 'food' && $request?->product_gellary == null);
                 })
             ],
-            'price' => 'required|numeric|between:.01,999999999999.99',
+            'price' => 'required|numeric|between:0,999999999999.99',
             'discount' => 'required|numeric|min:0',
             'store_id' => 'required',
             'description.*' => 'max:1000',
@@ -79,14 +79,16 @@ class ItemController extends Controller
             $dis = $request['discount'];
         }
 
-        if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', translate("Discount amount can't be greater than 100%
-"));
-        }
-
-        if ($request['price'] <= $dis || $validator->fails()) {
+        // if ($request['price'] <= $dis) {
+        //     $validator->getMessageBag()->add('unit_price', translate("Discount amount can't be greater than 100%"));
+        // }
+        if ($request->price == 0 &&  empty($request->options)) {
+            $validator->getMessageBag()->add('food_variations', '    سعر الصنف صفر يجب اضافه خصائص تحتوى على سعر    ' );
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
+        // if ($request['price'] <= $dis || $validator->fails()) {
+        //     return response()->json(['errors' => Helpers::error_processor($validator)]);
+        // }
 
         $images = [];
 
@@ -247,7 +249,7 @@ class ItemController extends Controller
 
                 foreach (json_decode($langdata) as $lang) {
 
-                    $temp_variation['name_' . $lang] = $option['name_' . $lang]??'';
+                    $temp_variation['name_' . $lang] = $option['name_' . $lang] ?? '';
                 }
 
                 $temp_variation['type'] = $option['type'];
@@ -269,12 +271,12 @@ class ItemController extends Controller
                 $temp_value = [];
 
                 foreach (array_values($option['values']) as $value) {
-                    if(isset($value['label_Default'])){
+                    if (isset($value['label_Default'])) {
                         $temp_option['label'] = $value['label_Default'];
                     }
                     foreach (json_decode($langdata) as $lang) {
                         if (isset($value['label_' . $lang])) {
-                            $temp_option['label_' . $lang] = $value['label_' . $lang]??'';
+                            $temp_option['label_' . $lang] = $value['label_' . $lang] ?? '';
                         }
                     }
                     $temp_option['optionPrice'] = $value['optionPrice'];
@@ -508,11 +510,11 @@ class ItemController extends Controller
 
             foreach (array_values($request->options) as $key => $option) {
 
-                    $temp_variation['name'] = $option['name']??'';
+                $temp_variation['name'] = $option['name'] ?? '';
 
                 foreach (json_decode($langdata) as $lang) {
 
-                    $temp_variation['name_' . $lang] = $option['name_' . $lang]??'';
+                    $temp_variation['name_' . $lang] = $option['name_' . $lang] ?? '';
                 }
 
                 $temp_variation['type'] = $option['type'];
@@ -534,11 +536,11 @@ class ItemController extends Controller
                 $temp_value = [];
                 foreach (array_values($option['values']) as $value) {
 
-                        $temp_option['label'] = $value['label']??'';
+                    $temp_option['label'] = $value['label'] ?? '';
 
                     foreach (json_decode($langdata) as $lang) {
                         if (isset($value['label_' . $lang])) {
-                            $temp_option['label_' . $lang] = $value['label_' . $lang]??'';
+                            $temp_option['label_' . $lang] = $value['label_' . $lang] ?? '';
                         }
                     }
 

@@ -414,7 +414,7 @@
                                             </span></label>
                                         <input type="number" min="0" max="999999999999.99" step="0.01"
                                             value="1" name="price" class="form-control"
-                                            placeholder="{{ translate('messages.Ex:') }} 100" required>
+                                            placeholder="{{ translate('messages.Ex:') }} 100" >
                                     </div>
                                 </div>
                                 <div class="col-sm-{{ Config::get('module.current_module_type') == 'food' ? '4' : '3' }} col-6"

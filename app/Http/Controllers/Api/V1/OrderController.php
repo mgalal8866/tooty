@@ -374,6 +374,7 @@ class OrderController extends Controller
 
                 if ($maximum_shipping_charge  >= $minimum_shipping_charge  && $delivery_charge >  $maximum_shipping_charge) {
                     $delivery_charge = $maximum_shipping_charge;
+                    
                     // Log::error('delivery_charge3-2 = '.$delivery_charge);
                 } else {
                     // $delivery_charge = $delivery_charge;
