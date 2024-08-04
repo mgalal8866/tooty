@@ -165,7 +165,8 @@ class Helpers
             unset($data['end_date']);
         }
         $data['variations'] = $variations;
-        $data_variation = $data['food_variations'] ? (gettype($data['food_variations']) == 'array' ? $data['food_variations'] : json_decode($data['food_variations'], true)) : [];
+        $data_variation = $data['food_variations'] ? (gettype($data['food_variations']) == 'array' ?Helpers::handelfood_variations($data['food_variations'], $local)  : Helpers::handelfood_variations($data['food_variations'], $local)) : [];
+        // $data_variation = $data['food_variations'] ? (gettype($data['food_variations']) == 'array' ? $data['food_variations'] : json_decode($data['food_variations'], true)) : [];
         if ($data->module->module_type == 'food') {
             foreach ($selected_variation as $selected_item) {
                 foreach ($data_variation as &$all_item) {

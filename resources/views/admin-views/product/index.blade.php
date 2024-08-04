@@ -468,6 +468,57 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="card shadow--card-2 border-0">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <span class="card-header-icon"><i class="tio-label-outlined"></i></span>
+                                <span>{{ translate('Other') }}</span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2">
+                                <div
+                                    class="col-sm-{{ Config::get('module.current_module_type') == 'food' ? '4' : '3' }} col-6">
+                                    <div class="form-group mb-0">
+                                        <label class="input-label"
+                                            for="exampleFormControlInput1">{{ translate('messages.barcode') }} <span
+                                                class="form-label-secondary text-danger" data-toggle="tooltip"
+                                                data-placement="right"
+                                                data-original-title="{{ translate('messages.Required.') }}"> *
+                                            </span></label>
+                                        <input type="text"  name="barcode" class="form-control" >
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-{{ Config::get('module.current_module_type') == 'food' ? '4' : '3' }} col-6">
+                                    <div class="form-group mb-0">
+                                        <label class="input-label"
+                                            for="exampleFormControlInput1">{{ translate('messages.price_bay') }} <span
+                                                class="form-label-secondary text-danger" data-toggle="tooltip"
+                                                data-placement="right"
+                                                data-original-title="{{ translate('messages.Required.') }}"> *
+                                            </span></label>
+                                        <input type="text"  name="price_bay" class="form-control" >
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-{{ Config::get('module.current_module_type') == 'food' ? '4' : '3' }} col-6">
+                                    <div class="form-group mb-0">
+                                        <label class="input-label"
+                                            for="exampleFormControlInput1">{{ translate('messages.max_qty') }} <span
+                                                class="form-label-secondary text-danger" data-toggle="tooltip"
+                                                data-placement="right"
+                                                data-original-title="{{ translate('messages.Required.') }}"> *
+                                            </span></label>
+                                        <input type="text"  name="max_qty" class="form-control" >
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-12" id="food_variation_section">
                     <div class="card shadow--card-2 border-0">
                         <div class="card-header flex-wrap">

@@ -481,7 +481,7 @@
                                             </span></label>
                                         <input type="number" value="{{ $product->price }}" min="0"
                                             max="999999999999.99" name="price" class="form-control" step="0.01"
-                                            placeholder="{{ translate('messages.Ex:') }} 100" required>
+                                            placeholder="{{ translate('messages.Ex:') }} 100"  >
                                     </div>
                                 </div>
                                 <div class="col-sm-4 col-6">
@@ -522,6 +522,58 @@
                                             placeholder="{{ translate('messages.Ex:') }} 100">
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card shadow--card-2 border-0">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <span class="card-header-icon"><i class="tio-label-outlined"></i></span>
+                                <span>Other</span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2">
+                                <div class="col-sm-4 col-6">
+                                    <div class="form-group mb-0">
+                                        <label class="input-label"
+                                            for="exampleFormControlInput1">{{ translate('messages.barcode') }}  <span class="form-label-secondary text-danger"
+                                            data-toggle="tooltip" data-placement="right"
+                                            data-original-title="{{ translate('messages.Required.')}}"> *
+                                            </span></label>
+                                        <input type="text" value="{{ $product->barcode }}"   name="barcode" class="form-control"    >
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-4 col-6">
+                                    <div class="form-group mb-0">
+                                        <label class="input-label"
+                                            for="exampleFormControlInput1">{{ translate('messages.price_bay') }}  <span class="form-label-secondary text-danger"
+                                            data-toggle="tooltip" data-placement="right"
+                                            data-original-title="{{ translate('messages.Required.')}}"> *
+                                            </span></label>
+                                        <input type="number" value="{{ $product->price_bay }}" min="0"
+                                            max="999999999999.99" name="price_bay" class="form-control" step="0.01"
+                                            placeholder="{{ translate('messages.Ex:') }} 100"  >
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-6">
+                                    <div class="form-group mb-0">
+                                        <label class="input-label"
+                                            for="exampleFormControlInput1">{{ translate('messages.max_qty') }}  <span class="form-label-secondary text-danger"
+                                            data-toggle="tooltip" data-placement="right"
+                                            data-original-title="{{ translate('messages.Required.')}}"> *
+                                            </span></label>
+                                        <input type="number" value="{{ $product->max_qty }}" min="0"
+                                            max="999999999999.99" name="max_qty" class="form-control" step="0.01"
+                                            placeholder="{{ translate('messages.Ex:') }} 100"  >
+                                    </div>
+
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

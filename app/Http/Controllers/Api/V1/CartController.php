@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Cart;
 use App\Models\Item;
+use App\Models\ItemCampaign;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\ItemCampaign;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -37,6 +38,7 @@ class CartController extends Controller
 
     public function add_to_cart(Request $request)
     {
+        Log::error($request->all());
         $validator = Validator::make($request->all(), [
             'guest_id' => $request->user ? 'nullable' : 'required',
             'item_id' => 'required|integer',
@@ -101,12 +103,14 @@ class CartController extends Controller
         $item->carts()->save($cart);
 
         $carts = Cart::where('user_id', $user_id)->where('is_guest',$is_guest)->where('module_id',$request->header('moduleId'))->get()
-        ->map(function ($data) {
+        ->map(function ($data)use($request){
             $data->add_on_ids = json_decode($data->add_on_ids,true);
             $data->add_on_qtys = json_decode($data->add_on_qtys,true);
             $data->variation = json_decode($data->variation,true);
-			$data->item = Helpers::cart_product_data_formatting($data->item, $data->variation,$data->add_on_ids,
-            $data->add_on_qtys, false, app()->getLocale());
+			// $data->item = Helpers::cart_product_data_formatting($data->item, $data->variation,$data->add_on_ids,
+            // $data->add_on_qtys, false, app()->getLocale());
+            $data->item = Helpers::cart_product_data_formatting($data->item, $data->variation,$data->add_on_ids,
+            $data->add_on_qtys, false,  $request->header('x-localization'));
             return $data;
 		});
         return response()->json($carts, 200);
@@ -114,6 +118,7 @@ class CartController extends Controller
 
     public function update_cart(Request $request)
     {
+        Log::error($request->all());
         $validator = Validator::make($request->all(), [
             'cart_id' => 'required',
             'guest_id' => $request->user ? 'nullable' : 'required',
@@ -148,12 +153,14 @@ class CartController extends Controller
         $cart->save();
 
         $carts = Cart::where('user_id', $user_id)->where('is_guest',$is_guest)->where('module_id',$request->header('moduleId'))->get()
-        ->map(function ($data) {
+        ->map(function ($data)use($request){
             $data->add_on_ids = json_decode($data->add_on_ids,true);
             $data->add_on_qtys = json_decode($data->add_on_qtys,true);
             $data->variation = json_decode($data->variation,true);
+			// $data->item = Helpers::cart_product_data_formatting($data->item, $data->variation,$data->add_on_ids,
+            // $data->add_on_qtys, false, app()->getLocale());
 			$data->item = Helpers::cart_product_data_formatting($data->item, $data->variation,$data->add_on_ids,
-            $data->add_on_qtys, false, app()->getLocale());
+            $data->add_on_qtys, false,  $request->header('x-localization'));
             return $data;
 		});
         return response()->json($carts, 200);

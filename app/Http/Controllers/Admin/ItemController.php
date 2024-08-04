@@ -382,7 +382,7 @@ class ItemController extends Controller
             'name.0' => 'required',
             'name.*' => 'max:191',
             'category_id' => 'required',
-            'price' => 'required|numeric|between:.01,999999999999.99',
+            'price' => 'required|numeric|between:0,999999999999.99',
             'store_id' => 'required',
             'description' => 'array',
             'description.*' => 'max:1000',
@@ -402,13 +402,16 @@ class ItemController extends Controller
             $dis = $request['discount'];
         }
 
-        if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', translate("Discount amount can't be greater than 100%"));
-        }
-
-        if ($request['price'] <= $dis || $validator->fails()) {
+       // if ($request['price'] <= $dis) {
+        //     $validator->getMessageBag()->add('unit_price', translate("Discount amount can't be greater than 100%"));
+        // }
+        if ($request->price == 0 &&  empty($request->options)) {
+            $validator->getMessageBag()->add('food_variations', '    سعر الصنف صفر يجب اضافه خصائص تحتوى على سعر    ' );
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
+        // if ($request['price'] <= $dis || $validator->fails()) {
+        //     return response()->json(['errors' => Helpers::error_processor($validator)]);
+        // }
 
         $item = Item::withoutGlobalScope(StoreScope::class)->find($id);
         $tag_ids = [];
