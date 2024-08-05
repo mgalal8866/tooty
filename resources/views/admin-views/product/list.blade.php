@@ -129,7 +129,7 @@
 
                         <!-- Search -->
                         <div class="input-group input--group">
-                            <input id="datatableSearch" name="search" value="{{ request()?->search ?? null }}" type="search" class="form-control h--40px" placeholder="{{translate('ex_:_search_item_by_name')}}" aria-label="{{translate('messages.search_here')}}">
+                            <input id="datatableSearch" name="search" value="{{ request()?->search ?? null }}" type="search" class="form-control h--40px" placeholder="{{translate('ex_:_search_item_by_name')}} - Barcode" aria-label="{{translate('messages.search_here')}}">
                             <button type="submit" class="btn btn--secondary h--40px"><i class="tio-search"></i></button>
                         </div>
                         <!-- End Search -->

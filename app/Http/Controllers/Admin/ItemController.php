@@ -872,7 +872,9 @@ class ItemController extends Controller
             ->when($request['search'], function ($query) use ($key) {
                 return $query->where(function ($q) use ($key) {
                     foreach ($key as $value) {
-                        $q->where('name', 'like', "%{$value}%")->orWhereHas('category', function ($q) use ($value) {
+                        $q->where('name', 'like', "%{$value}%")
+                        ->orWhere('barcode',  $value)
+                        ->orWhereHas('category', function ($q) use ($value) {
                             return $q->where('name', 'like', "%{$value}%");
                         });
                     }
