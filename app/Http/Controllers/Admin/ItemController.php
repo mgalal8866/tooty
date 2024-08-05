@@ -296,6 +296,9 @@ class ItemController extends Controller
         $item->discount = $request->discount_type == 'amount' ? $request->discount : $request->discount;
         $item->discount_type = $request->discount_type;
         $item->unit_id = $request->unit;
+        $item->barcode = $request->barcode;
+        $item->max_qty = $request->max_qty;
+        $item->price_bay = $request->price_bay;
         $item->attributes = $request->has('attribute_id') ? json_encode($request->attribute_id) : json_encode([]);
         $item->add_ons = $request->has('addon_ids') ? json_encode($request->addon_ids) : json_encode([]);
         $item->store_id = $request->store_id;
@@ -566,6 +569,9 @@ class ItemController extends Controller
         $item->discount = $request->discount_type == 'amount' ? $request->discount : $request->discount;
         $item->discount_type = $request->discount_type;
         $item->unit_id = $request->unit;
+        $item->barcode = $request->barcode;
+        $item->max_qty = $request->max_qty;
+        $item->price_bay = $request->price_bay;
         $item->attributes = $request->has('attribute_id') ? json_encode($request->attribute_id) : json_encode([]);
         $item->add_ons = $request->has('addon_ids') ? json_encode($request->addon_ids) : json_encode([]);
         $item->store_id = $request->store_id;
